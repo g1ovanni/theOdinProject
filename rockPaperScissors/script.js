@@ -44,20 +44,22 @@ function playRound(playerSelection, computerSelection) {
   computerSelection = computerPlay();
 
   if (playerSelection === computerSelection) {
-    console.log("Draw!!");
+    console.log("**** Draw!!");
   } else if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "paper" && computerSelection === "rock") ||
     (playerSelection === "scissors" && computerSelection === "paper")
   ) {
-    console.log(`You won!! ${playerSelection} beats ${computerSelection}`);
+    console.log(`**** You won!! ${playerSelection} beats ${computerSelection}`);
     count++;
   } else if (
     (computerSelection === "rock" && playerSelection === "scissors") ||
     (computerSelection === "paper" && playerSelection === "rock") ||
     (computerSelection === "scissors" && playerSelection === "paper")
   ) {
-    console.log(`You lost!! ${computerSelection} beats ${playerSelection}`);
+    console.log(
+      `**** You lost!! ${computerSelection} beats ${playerSelection}`
+    );
   }
   return count;
 }
@@ -67,7 +69,7 @@ function play(winnerCount) {
   let i;
 
   winnerCount = 0;
-  for (i = 0; i < 6; i++) {
+  for (i = 0; i < 5; i++) {
     winnerCount = winnerCount + playRound();
   }
   console.log(`Your score was ${winnerCount} out of ${i}`);
