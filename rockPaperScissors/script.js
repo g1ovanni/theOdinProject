@@ -28,12 +28,10 @@ function computerPlay() {
 // Captures the player play
 function playerPlay() {
   let userChoice;
-  // let inLowerCase;
 
   userChoice = prompt(
     "Please enter your selection (rock, paper or scissors)"
   ).toLowerCase();
-  // inLowerCase.toLowerCase();
   console.log(`Player play was:\t ${userChoice}`);
   return userChoice;
 }
