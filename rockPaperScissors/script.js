@@ -4,6 +4,7 @@ let computerSelection;
 let playerSelection;
 let winnerCount;
 
+// Generates random number to calculate the computer play
 function computerPlay() {
   let result;
 
@@ -24,6 +25,7 @@ function computerPlay() {
   console.log(result);
 }
 
+// Captures the player play
 function playerPlay() {
   let userChoice;
   // let inLowerCase;
@@ -36,6 +38,7 @@ function playerPlay() {
   return userChoice;
 }
 
+// Computes who won and return the times a player wins
 function playRound(playerSelection, computerSelection) {
   let count = 0;
   let draw = 0;
@@ -61,14 +64,15 @@ function playRound(playerSelection, computerSelection) {
   return count;
 }
 
+// Loops n times the rounds to play
 function play(winnerCount) {
   let i;
 
   winnerCount = 0;
-  for (i = 0; i < 5; i++) {
+  for (i = 0; i < 6; i++) {
     winnerCount = winnerCount + playRound();
   }
-  console.log(`Your score was ${winnerCount} out of 5`);
+  console.log(`Your score was ${winnerCount} out of ${i}`);
 }
 
 play();
