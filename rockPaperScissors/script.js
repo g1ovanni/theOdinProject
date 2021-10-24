@@ -1,16 +1,74 @@
 "use strict";
 
+let computerSelection;
+let playerSelection;
+let winnerCount;
+
 function computerPlay() {
   let result;
 
   result = Math.random();
 
-  if (result < 0.33) console.log("rock");
-  if (result >= 0.33 && result < 0.66) console.log("paper");
-  if (result >= 0.66) console.log("scissors");
+  if (result < 0.33) {
+    console.log("Computer play was:\t rock");
+    return "rock";
+  }
+  if (result >= 0.33 && result < 0.66) {
+    console.log("Computer play was:\t paper");
+    return "paper";
+  }
+  if (result >= 0.66) {
+    console.log("Computer play was:\t scissors");
+    return "scissors";
+  }
   console.log(result);
 }
 
-computerPlay();
+function playerPlay() {
+  let userChoice;
+  // let inLowerCase;
 
-function playRound(playerSelection, computerSelection) {}
+  userChoice = prompt(
+    "Please enter your selection (rock, paper or scissors)"
+  ).toLowerCase();
+  // inLowerCase.toLowerCase();
+  console.log(`Player play was:\t ${userChoice}`);
+  return userChoice;
+}
+
+function playRound(playerSelection, computerSelection) {
+  let count = 0;
+  let draw = 0;
+  playerSelection = playerPlay();
+  computerSelection = computerPlay();
+
+  if (playerSelection === computerSelection) {
+    console.log("Draw!!");
+  } else if (
+    (playerSelection === "rock" && computerSelection === "scissors") ||
+    (playerSelection === "paper" && computerSelection === "rock") ||
+    (playerSelection === "scissors" && computerSelection === "paper")
+  ) {
+    console.log(`You won!! ${playerSelection} beats ${computerSelection}`);
+    count++;
+  } else if (
+    (computerSelection === "rock" && playerSelection === "scissors") ||
+    (computerSelection === "paper" && playerSelection === "rock") ||
+    (computerSelection === "scissors" && playerSelection === "paper")
+  ) {
+    console.log(`You lost!! ${computerSelection} beats ${playerSelection}`);
+  }
+  return count;
+}
+
+function play(winnerCount) {
+  let i;
+
+  winnerCount = 0;
+  for (i = 0; i < 5; i++) {
+    winnerCount = winnerCount + playRound();
+  }
+  console.log(`Your score was ${winnerCount} out of 5`);
+}
+
+play();
